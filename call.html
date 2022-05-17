@@ -1,0 +1,28 @@
+<html>
+<script>
+    function CallMe() {
+
+        var inputNumber = document.getElementById('number').value;
+
+        var request = new XMLHttpRequest(); // Create a request variable and assign a new XMLHttpRequest object to it.
+        request.open('GET', 'http://localhost:8080/isPrime/' + inputNumber);
+        request.send();
+
+        request.onload = async function () {
+            var data = JSON.parse(this.response);
+            document.getElementById('result').value = data
+        }
+    }
+
+
+</script>
+<body>
+
+
+    <input type="text" id="number">
+    <input type="button" onclick="javascript:CallMe();" value="Click to see if the number is prime">
+
+    <input type="text" id="result">
+</body>
+
+</html>
